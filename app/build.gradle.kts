@@ -1,18 +1,18 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-
+    alias(libs.plugins.compose.compiler)
     id("com.google.devtools.ksp")
 }
 
 android {
     namespace = "com.example.femaledatamanagement"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.femaledatamanagement"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -58,13 +58,13 @@ android {
         // https://developer.android.com/jetpack/androidx/releases/room?hl=ko
 
         //옛날버전 찾아서 기본기능만 업데이트함.
-        val room_version = "2.6.1"
-        implementation("androidx.room:room-runtime:$room_version")
-        ksp("androidx.room:room-compiler:$room_version")
+        val roomVersion = "2.6.1"
+        implementation("androidx.room:room-runtime:$roomVersion")
+        ksp("androidx.room:room-compiler:$roomVersion")
 
-        //ksp 퀵스타터 어쩌고에서 반영하라는 내용 추가중
-//        implementation("com.google.dager:dager-compiler:2.51.1")
-//        ksp("com.google.dager:dager-compiler:2.51.1")
+        //ksp 퀵스타터
+        implementation("com.google.dagger:dagger-compiler:2.51.1")
+        ksp("com.google.dagger:dagger-compiler:2.51.1")
 
         implementation(libs.androidx.core.ktx)
         implementation(libs.androidx.lifecycle.runtime.ktx)
